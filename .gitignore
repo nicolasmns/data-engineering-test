@@ -1,0 +1,19 @@
+# Ignore python folders
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore jupyter checkpoints
+.ipynb_checkpoints/
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore local configs
+.vscode/
+.idea/
+.DS_Store
+
+# Ignore coverage
+.coverage
+coverage/
