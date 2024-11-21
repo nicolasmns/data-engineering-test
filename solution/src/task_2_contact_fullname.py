@@ -1,21 +1,18 @@
+from src.task_1_crate_distribution import load_csv_to_dataframe
 import pandas as pd
 import ast
 import os
-import sys
-from src.task_1_crate_distribution import load_csv_to_dataframe
-
-
 
 #######################################################################################################################
 # Test 2: DataFrame of Orders with Full Name of the Contact                                                           #
 # Provide a DataFrame (df_1) containing the following columns:                                                        #
 # ------------------------------------------------------------------------------------------------                    #
 # | Column	            | Description                                                            |                    #
+# |---------------------|------------------------------------------------------------------------|                    #
 # | order_id	        | The order_id field must contain the unique identifier of the order.    |                    #
+# |---------------------|------------------------------------------------------------------------|                    #
 # | contact_full_name	| The contact_full_name field must contain the full name of the contact. |                    #
-# ------------------------------------------------------------------------------------------------                    #
-# Include unit tests to verify that the full names are correctly extracted and the placeholder is used appropriately. #
-#                                                                                                                     #
+# ----------------------|-------------------------------------------------------------------------                    #
 # ##################################################################################################################### 
 
 def extract_contact_full_name(contact_data):
@@ -61,7 +58,10 @@ def create_orders_with_contact_names(raw_dataframe: pd.DataFrame) -> pd.DataFram
 
     return raw_dataframe[["order_id", "contact_full_name"]]
 
-if __name__ == '__main__':
+def main():
     orders_filepath = os.path.join(os.path.dirname(__file__), "../../resources/orders.csv")
     df_1 = create_orders_with_contact_names(load_csv_to_dataframe(orders_filepath))
     print(df_1)
+
+if __name__ == '__main__':
+    main()
