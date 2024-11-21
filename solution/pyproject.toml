@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "ifco-assessment"
+version = "0.1.0"
+description = "Data analysis and processing tasks for the IFCO technical assessment."
+authors = ["nicolasmns <nicolas.mns@hotmail.com>"]
+readme = "README.md"
+packages = [
+	{ include = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.3"
+numpy = "^2.1.3"
+jsonschema = "^4.23.0"
+pyarrow = "^18.0.0"
+matplotlib = "^3.9.2"
+notebook = "^7.2.2"
+ipykernel = "^6.29.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+mypy = "^1.13.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
