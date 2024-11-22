@@ -1,12 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from src.utils import getFilepath
 
 #########################################################################################
 #   Test 1: Distribution of Crate Type per Company                                      #
 #   Calculate the distribution of crate types per company (number of orders per type).  #
 #########################################################################################
-
 
 class InvalidSeparatorError(Exception):
     """Custom exception for invalid CSV separators."""
@@ -110,7 +110,7 @@ def bar_plot_df(distribution_df):
     plt.show()
 
 def main():
-    orders_filepath = os.path.join(os.path.dirname(__file__), "../../resources/orders.csv")
+    orders_filepath = getFilepath("orders.csv")
     orders_df = load_csv_to_dataframe(orders_filepath)
     distribution_df = calculate_crate_distribution(orders_df)
     bar_plot_df(distribution_df)

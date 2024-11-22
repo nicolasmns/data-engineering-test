@@ -1,4 +1,5 @@
 from src.task_1_crate_distribution import load_csv_to_dataframe
+from src.utils import getFilepath
 import pandas as pd
 import ast
 import os
@@ -73,7 +74,7 @@ def create_orders_with_contact_address(processed_dataframe: pd.DataFrame) -> pd.
     return processed_dataframe[["order_id", "contact_address"]]
 
 def main():
-    orders_filepath = os.path.join(os.path.dirname(__file__), "../../resources/orders.csv")
+    orders_filepath = getFilepath("orders.csv")
     df_2 = create_orders_with_contact_address(load_csv_to_dataframe(orders_filepath))
     print(df_2)
 
