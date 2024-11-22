@@ -1,0 +1,17 @@
+FROM python:3.10-slim
+
+# downloads postgresql with its dependencies
+RUN apt-get update && apt-get install -y postgresql-client && apt-get clean
+
+# waits a bit and downloads poetry 
+RUN pip install poetry
+
+# Copies the project to the container
+WORKDIR /app
+COPY . .
+
+# downloads the poetry dependencies
+RUN poetry config virtualenvs.create false && poetry install
+
+# Comando predeterminado
+CMD ["bash"]
