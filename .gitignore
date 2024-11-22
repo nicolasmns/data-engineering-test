@@ -17,3 +17,6 @@ __pycache__/
 # Ignore coverage
 .coverage
 coverage/
+
+.user.yml
+logs/
