@@ -1,7 +1,9 @@
 from src.task_1_crate_distribution import load_csv_to_dataframe
+from src.utils import getFilepath
 import pandas as pd
 import ast
 import os
+
 
 #######################################################################################################################
 # Test 2: DataFrame of Orders with Full Name of the Contact                                                           #
@@ -59,7 +61,7 @@ def create_orders_with_contact_names(raw_dataframe: pd.DataFrame) -> pd.DataFram
     return raw_dataframe[["order_id", "contact_full_name"]]
 
 def main():
-    orders_filepath = os.path.join(os.path.dirname(__file__), "../../resources/orders.csv")
+    orders_filepath = getFilepath("orders.csv")
     df_1 = create_orders_with_contact_names(load_csv_to_dataframe(orders_filepath))
     print(df_1)
 
