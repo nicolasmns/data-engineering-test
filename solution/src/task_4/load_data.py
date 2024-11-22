@@ -121,5 +121,3 @@ def load_data_to_postgres(host):
     except Exception as e:
         print(f"Error connecting to the database: {e}")
 
-if __name__ == "__main__":
-    load_data_to_postgres("db")

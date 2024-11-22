@@ -1,0 +1,11 @@
+task_4_profile:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: user
+      password: password
+      port: 5432
+      dbname: data_engineering_test
+      schema: public
+  target: dev
