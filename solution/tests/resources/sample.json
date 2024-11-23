@@ -1,0 +1,13 @@
+{
+    "data": {
+      "invoices": [
+        {
+          "id": "e1e1e1e1-e1e1-e1e1-e1e1-e1e1e1e1e1e1",
+          "orderId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+          "companyId": "1e2b47e6-499e-41c6-91d3-09d12dddfbbd",
+          "grossValue": "324222",
+          "vat": "0"
+        }
+        ]
+    }
+}

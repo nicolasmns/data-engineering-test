@@ -1,9 +1,12 @@
 import psycopg2
 import pandas as pd
-import os
 from src.utils import getFilepath
 from datetime import datetime
+from json.decoder import JSONDecodeError
 import json
+
+import os
+
 
 ORDER_FILE = "orders.csv"
 INVOICING_FILE = "invoicing_data.json"
@@ -27,29 +30,19 @@ def convert_date(date_string):
    
 def clean_contact_data(value):
     """
-    Cleans and formats the contact data.
+    Handles empty or null contact data values.
 
     Args:
-        value (str): A JSON-formatted string or other input representing contact data.
+        value (str): Contact data input.
 
     Returns:
-        str: A cleaned and properly formatted JSON string. If the input is empty or invalid, 
-        returns an empty string or the string representation of the input.
+        str: The input value if not empty or None, otherwise an empty string.
     """
-    if pd.isna(value) or value == "":
-        return ""
-    try:
-        parsed_value = json.loads(value)  
-        return json.dumps(parsed_value)
-    except (json.JSONDecodeError, TypeError):
-        return str(value)
+    return "" if pd.isna(value) or value == "" else value
 
-def load_data_to_postgres(host):
+def load_data_to_postgres(host, test_path):
     """
-    This method connects to a PostgreSQL database and loads data from two sources:
-    - orders.csv: Inserts order data into the 'orders' table.
-    - invoicing_data.json: Inserts invoicing data into the 'invoicing_data' table.
-    It handles database connections and ensures all data is committed once successfully loaded.
+    Connects to a PostgreSQL database and loads data from orders.csv and invoicing_data.json.
     """
     try:
         conn = psycopg2.connect(
@@ -62,24 +55,40 @@ def load_data_to_postgres(host):
         cursor = conn.cursor()
 
         try:
+            # Determine file paths
+            if test_path is None:
+                orders_filepath = getFilepath(ORDER_FILE)
+                invoicing_filepath = getFilepath(INVOICING_FILE)
+            else:
+                orders_filepath = test_path[0]
+                invoicing_filepath = test_path[1]
+
             # Load orders file
-            orders_filepath = getFilepath(ORDER_FILE)
-            orders_df = pd.read_csv(orders_filepath, sep=";")
+            try:
+                orders_df = pd.read_csv(orders_filepath, sep=";")
+                if orders_df.empty:
+                    raise Exception("orders.csv is empty.")
+            except pd.errors.EmptyDataError:
+                raise Exception("orders.csv is empty.")
+            except pd.errors.ParserError as e:
+                raise Exception(f"Error parsing orders.csv: {e}")
+            except FileNotFoundError:
+                raise FileNotFoundError(f"Orders file not found: {orders_filepath}")
 
-            # Convert date to YYYY-MM-DD
+            # Validate required columns
+            required_columns = ["order_id", "date", "company_id", "company_name", "crate_type", "contact_data", "salesowners"]
+            missing_columns = [col for col in required_columns if col not in orders_df.columns]
+            if missing_columns:
+                raise Exception(f"Missing required columns in orders.csv: {missing_columns}")
+
+            # Process and insert data into the database
             orders_df["date"] = orders_df["date"].apply(convert_date)
-
-            # 
             orders_df["contact_data"] = orders_df["contact_data"].apply(clean_contact_data)
 
             insert_query = """
                 INSERT INTO orders (order_id, date, company_id, company_name, crate_type, contact_data, salesowners)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
             """
-
-            print(f"Attempting to insert {len(orders_df)} records into orders table.")
-
-            # Executemany is more efficient to insert records
             cursor.executemany(insert_query, [
                 (row["order_id"], row["date"], row["company_id"], row["company_name"], row["crate_type"],
                  row["contact_data"], row["salesowners"])
@@ -88,36 +97,47 @@ def load_data_to_postgres(host):
             print("Orders.csv data loaded successfully!")
 
             # Load invoicing file
-            invoicing_filepath = getFilepath(INVOICING_FILE)
+            try:
+                with open(invoicing_filepath, "r") as file:
+                    data = json.load(file)
+            except FileNotFoundError:
+                raise FileNotFoundError(f"Invoicing file not found: {invoicing_filepath}")
 
-            with open(invoicing_filepath, "r") as file:
-                data = json.load(file)
+            # Validate JSON keys
+            invoicing_data = data.get("data", {}).get("invoices", [])
+            if not invoicing_data:
+                raise Exception("No invoices found in invoicing_data.json.")
+            required_keys = ["id", "orderId", "companyId", "grossValue", "vat"]
+            for key in required_keys:
+                if key not in invoicing_data[0]:
+                    raise Exception(f"Missing required key '{key}' in invoicing_data.json.")
 
-            invoices = data["data"]["invoices"]
-
-            invoicing_df = pd.DataFrame(invoices)
-
+            # Process and insert invoicing data
+            try:
+                invoicing_df = pd.DataFrame(invoicing_data)
+            except FileNotFoundError:
+                raise Exception(f"Invoicing file not found: {invoicing_filepath}")
             invoicing_query = """
                 INSERT INTO invoicing_data (id, order_id, company_id, gross_value, vat)
                 VALUES (%s, %s, %s, %s, %s)
             """
-
             cursor.executemany(invoicing_query, [
                 (row["id"], row["orderId"], row["companyId"], row["grossValue"], row["vat"])
                 for _, row in invoicing_df.iterrows()
             ])
+            print("Invoicing_data.json data loaded successfully!")
 
-            conn.commit() 
-            print("Invoicing_data loaded successfully")
+            conn.commit()
 
         except Exception as e:
             conn.rollback()
             print(f"Error while loading data: {e}")
-        
+            raise e
+
         finally:
             cursor.close()
             conn.close()
 
     except Exception as e:
         print(f"Error connecting to the database: {e}")
-
+        raise e

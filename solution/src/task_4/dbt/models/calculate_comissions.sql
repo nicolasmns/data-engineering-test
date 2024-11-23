@@ -1,10 +1,10 @@
 WITH orders_with_salesowners AS (
     SELECT
         o.order_id,
-        i.gross_value / 100.0 AS gross_value_in_euros,
+        round(i.gross_value / 100.0, 2) AS gross_value_in_euros,
 
         -- Converting the gross value into net value by taking the vat out in a non-lineal way.
-        (i.gross_value / 100.0) / (1 + i.vat / 100.0) AS net_value_in_euros,
+        round((i.gross_value / 100.0) / (1 + i.vat / 100.0), 2) AS net_value_in_euros,
         string_to_array(o.salesowners, ', ') AS salesowners_array
     FROM
         public.orders o

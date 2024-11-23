@@ -2,14 +2,14 @@ import pandas as pd
 import pytest
 import os
 from src.task_1_crate_distribution import *
+from tests.utils import locate_test_file
 
-
-@pytest.fixture
-def locate_test_file():
-    """Helper to locate test resource files."""
-    def _locate(filename):
-        return os.path.join(os.path.dirname(__file__), f"resources/{filename}")
-    return _locate
+# @pytest.fixture
+# def locate_test_file():
+#     """Helper to locate test resource files."""
+#     def _locate(filename):
+#         return os.path.join(os.path.dirname(__file__), f"resources/{filename}")
+#     return _locate
 
 
 @pytest.fixture
@@ -44,38 +44,38 @@ def validate_dataframe_format(df, expected_index_name, expected_column_name):
     assert df.columns.name == expected_column_name, f"Column name should be '{expected_column_name}'"
 
 
-def test_load_csv_to_dataframe_valid_file(locate_test_file):
+def test_load_csv_to_dataframe_valid_file():
     file_path = locate_test_file("sample.csv")
     df = load_csv_to_dataframe(file_path)
     assert isinstance(df, pd.DataFrame), "Should return a DataFrame"
     assert not df.empty, "DataFrame should not be empty."
 
 
-def test_load_csv_to_dataframe_empty_file(locate_test_file):
+def test_load_csv_to_dataframe_empty_file():
     file_path = locate_test_file("empty_sample.csv")
     with pytest.raises(pd.errors.EmptyDataError):
         load_csv_to_dataframe(file_path)
 
 
-def test_load_csv_to_dataframe_invalid_separator(locate_test_file):
+def test_load_csv_to_dataframe_invalid_separator():
     file_path = locate_test_file("invalid_sep_sample.csv")
     with pytest.raises(pd.errors.ParserError):
         load_csv_to_dataframe(file_path)
 
 
-def test_load_csv_to_dataframe_missing_columns(locate_test_file):
+def test_load_csv_to_dataframe_missing_columns():
     file_path = locate_test_file("missing_columns_sample.csv")
     with pytest.raises(ValueError, match="Missing columns:"):
         load_csv_to_dataframe(file_path)
 
 
-def test_load_csv_to_dataframe_unexpected_columns(locate_test_file):
+def test_load_csv_to_dataframe_unexpected_columns():
     file_path = locate_test_file("unexpected_columns_sample.csv")
     with pytest.raises(ValueError, match="Unexpected columns:"):
         load_csv_to_dataframe(file_path)
 
 
-def test_load_csv_to_dataframe_non_existent_file(locate_test_file):
+def test_load_csv_to_dataframe_non_existent_file():
     file_path = locate_test_file("this_file_doesn't_exist.csv")
     with pytest.raises(FileNotFoundError):
         load_csv_to_dataframe(file_path)
