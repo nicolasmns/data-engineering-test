@@ -61,19 +61,19 @@ Each task is implemented as a standalone script or function. Below are the instr
 #### Task 1: Distribution of Crate Types Per Company
 Run the script to calculate the distribution of crate types per company:
 ```bash
-python src/task_1/crate_distribution.py
+python src/task_1_crate_distribution.py
 ```
 
 #### Task 2: DataFrame of Orders with Full Name of the Contact
 Run the script to create a DataFrame with order IDs and full contact names:
 ```bash
-python src/task_2/contact_fullname.py
+python src/task_2_contact_fullname.py
 ```
 
 #### Task 3: DataFrame of Orders with Contact Address
 Run the script to create a DataFrame with order IDs and contact addresses:
 ```bash
-python src/task_3/contact_address.py
+python src/task_3_contact_address.py
 ```
 
 #### Task 4: Calculation of Sales Team Commissions
@@ -89,7 +89,7 @@ This script will:
 #### Task 5: DataFrame of Companies with Sales Owners
 Run the script to generate a DataFrame of companies with their sales owners:
 ```bash
-python src/task_5/company_sales_owners.py
+python src/task_5_sales_owners.py
 ```
 
 ### Step 5: Run Unit Tests
