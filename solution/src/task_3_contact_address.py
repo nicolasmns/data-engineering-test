@@ -2,7 +2,6 @@ from src.task_1_crate_distribution import load_csv_to_dataframe
 from src.utils import getFilepath
 import pandas as pd
 import ast
-import os
 
 #######################################################################################################################
 # Test 3: DataFrame of Orders with Contact Address                                                                    #

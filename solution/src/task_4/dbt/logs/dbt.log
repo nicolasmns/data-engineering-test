@@ -11017,3 +11017,493 @@ drop view if exists "data_engineering_test"."public"."calculate_comissions__dbt_
 [0m01:41:33.419202 [debug] [MainThread]: Command `dbt run` succeeded at 01:41:33.419202 after 4.33 seconds
 [0m01:41:33.419202 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AF9D5AE90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AFE32E050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017AFE174310>]}
 [0m01:41:33.420202 [debug] [MainThread]: Flushing usage events
+[0m02:42:21.384225 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023162FED3C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023165B53280>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023165B530A0>]}
+
+
+============================== 02:42:21.389731 | 5388a5da-1f49-422d-8fe3-6a949f6b63f6 ==============================
+[0m02:42:21.389731 [info ] [MainThread]: Running with dbt=1.8.9
+[0m02:42:21.389731 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4\\dbt\\logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt --project-dir C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt', 'send_anonymous_usage_stats': 'True'}
+[0m02:42:21.611144 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000231637A8940>]}
+[0m02:42:21.661952 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000231655574C0>]}
+[0m02:42:21.663954 [info ] [MainThread]: Registered adapter: postgres=1.8.2
+[0m02:42:22.049799 [debug] [MainThread]: checksum: 132857a23e9d07220246854f7763165174ce9b737cfc7867629ace4294e520b1, vars: {}, profile: , target: , version: 1.8.9
+[0m02:42:22.999621 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m02:42:23.000622 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m02:42:23.028724 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023166130130>]}
+[0m02:42:23.139316 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002316610DAB0>]}
+[0m02:42:23.140318 [info ] [MainThread]: Found 1 model, 428 macros
+[0m02:42:23.140318 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002316610DDE0>]}
+[0m02:42:23.142318 [info ] [MainThread]: 
+[0m02:42:23.143318 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m02:42:23.145317 [debug] [ThreadPool]: Acquiring new postgres connection 'list_data_engineering_test'
+[0m02:42:23.272813 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test"
+[0m02:42:23.273814 [debug] [ThreadPool]: On list_data_engineering_test: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "list_data_engineering_test"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m02:42:23.274814 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m02:42:23.309035 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.034 seconds
+[0m02:42:23.310605 [debug] [ThreadPool]: On list_data_engineering_test: Close
+[0m02:42:23.312612 [debug] [ThreadPool]: Acquiring new postgres connection 'list_data_engineering_test_public'
+[0m02:42:23.320658 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test_public"
+[0m02:42:23.321656 [debug] [ThreadPool]: On list_data_engineering_test_public: BEGIN
+[0m02:42:23.322656 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m02:42:23.340209 [debug] [ThreadPool]: SQL status: BEGIN in 0.018 seconds
+[0m02:42:23.341209 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test_public"
+[0m02:42:23.341209 [debug] [ThreadPool]: On list_data_engineering_test_public: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "list_data_engineering_test_public"} */
+select
+      'data_engineering_test' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'data_engineering_test' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'data_engineering_test' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m02:42:23.357328 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.015 seconds
+[0m02:42:23.359145 [debug] [ThreadPool]: On list_data_engineering_test_public: ROLLBACK
+[0m02:42:23.360147 [debug] [ThreadPool]: On list_data_engineering_test_public: Close
+[0m02:42:23.366145 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.367146 [debug] [MainThread]: On master: BEGIN
+[0m02:42:23.367146 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m02:42:23.384128 [debug] [MainThread]: SQL status: BEGIN in 0.016 seconds
+[0m02:42:23.384128 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.385129 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m02:42:23.394599 [debug] [MainThread]: SQL status: SELECT 2 in 0.008 seconds
+[0m02:42:23.395600 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002316610CF70>]}
+[0m02:42:23.397107 [debug] [MainThread]: On master: ROLLBACK
+[0m02:42:23.399170 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.399170 [debug] [MainThread]: On master: BEGIN
+[0m02:42:23.401173 [debug] [MainThread]: SQL status: BEGIN in 0.002 seconds
+[0m02:42:23.402171 [debug] [MainThread]: On master: COMMIT
+[0m02:42:23.402171 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.403172 [debug] [MainThread]: On master: COMMIT
+[0m02:42:23.404171 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m02:42:23.405170 [debug] [MainThread]: On master: Close
+[0m02:42:23.406171 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m02:42:23.406171 [info ] [MainThread]: 
+[0m02:42:23.410113 [debug] [Thread-1 (]: Began running node model.task_4.calculate_comissions
+[0m02:42:23.411112 [info ] [Thread-1 (]: 1 of 1 START sql view model public.calculate_comissions ........................ [RUN]
+[0m02:42:23.412114 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.task_4.calculate_comissions'
+[0m02:42:23.413114 [debug] [Thread-1 (]: Began compiling node model.task_4.calculate_comissions
+[0m02:42:23.420658 [debug] [Thread-1 (]: Writing injected SQL for node "model.task_4.calculate_comissions"
+[0m02:42:23.421652 [debug] [Thread-1 (]: Began executing node model.task_4.calculate_comissions
+[0m02:42:23.465161 [debug] [Thread-1 (]: Writing runtime sql for node "model.task_4.calculate_comissions"
+[0m02:42:23.467131 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.468155 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: BEGIN
+[0m02:42:23.468155 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m02:42:23.484644 [debug] [Thread-1 (]: SQL status: BEGIN in 0.016 seconds
+[0m02:42:23.485643 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.485643 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+
+  create view "data_engineering_test"."public"."calculate_comissions__dbt_tmp"
+    
+    
+  as (
+    WITH orders_with_salesowners AS (
+    SELECT
+        o.order_id,
+        round(i.gross_value / 100.0, 2) AS gross_value_in_euros,
+
+        -- Converting the gross value into net value by taking the vat out in a non-lineal way.
+        round((i.gross_value / 100.0) / (1 + i.vat / 100.0), 2) AS net_value_in_euros,
+        string_to_array(o.salesowners, ', ') AS salesowners_array
+    FROM
+        public.orders o
+    JOIN
+        public.invoicing_data i ON o.order_id = i.order_id
+),
+salesowners AS (
+    SELECT
+        ows.order_id,
+        ows.net_value_in_euros,
+        so.salesowner,
+        so.ordinality AS salesowner_position
+    FROM
+        orders_with_salesowners ows,
+        unnest(ows.salesowners_array) WITH ORDINALITY AS so(salesowner, ordinality) -- unnests the array and assigns the order for each sales person in the order that it comes from the file
+),
+commission_calc AS (
+    SELECT
+        order_id,
+        salesowner,
+        CASE 
+            WHEN salesowner_position = 1 THEN net_value_in_euros * 0.06    -- Main owner - 6%
+            WHEN salesowner_position = 2 THEN net_value_in_euros * 0.025   -- Co-owner 1 - 2.5%
+            WHEN salesowner_position = 3 THEN net_value_in_euros * 0.0095  -- Co-owner 2 - 0.95%
+            ELSE 0  -- No comission
+        END AS commission
+    FROM salesowners
+)
+SELECT
+    salesowner,
+    ROUND(SUM(commission), 2) AS total_commission
+FROM commission_calc
+GROUP BY salesowner
+ORDER BY total_commission DESC
+  );
+[0m02:42:23.504102 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.017 seconds
+[0m02:42:23.512160 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.513666 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+alter table "data_engineering_test"."public"."calculate_comissions" rename to "calculate_comissions__dbt_backup"
+[0m02:42:23.515679 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m02:42:23.521143 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.522146 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+alter table "data_engineering_test"."public"."calculate_comissions__dbt_tmp" rename to "calculate_comissions"
+[0m02:42:23.524143 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m02:42:23.541781 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: COMMIT
+[0m02:42:23.542779 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.542779 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: COMMIT
+[0m02:42:23.545782 [debug] [Thread-1 (]: SQL status: COMMIT in 0.003 seconds
+[0m02:42:23.553807 [debug] [Thread-1 (]: Applying DROP to: "data_engineering_test"."public"."calculate_comissions__dbt_backup"
+[0m02:42:23.558323 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:42:23.558832 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+drop view if exists "data_engineering_test"."public"."calculate_comissions__dbt_backup" cascade
+[0m02:42:23.563889 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.005 seconds
+[0m02:42:23.567912 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: Close
+[0m02:42:23.569930 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5388a5da-1f49-422d-8fe3-6a949f6b63f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000231665BE380>]}
+[0m02:42:23.570928 [info ] [Thread-1 (]: 1 of 1 OK created sql view model public.calculate_comissions ................... [[32mCREATE VIEW[0m in 0.16s]
+[0m02:42:23.571932 [debug] [Thread-1 (]: Finished running node model.task_4.calculate_comissions
+[0m02:42:23.572935 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.573950 [debug] [MainThread]: On master: BEGIN
+[0m02:42:23.573950 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m02:42:23.588993 [debug] [MainThread]: SQL status: BEGIN in 0.015 seconds
+[0m02:42:23.590200 [debug] [MainThread]: On master: COMMIT
+[0m02:42:23.590200 [debug] [MainThread]: Using postgres connection "master"
+[0m02:42:23.591198 [debug] [MainThread]: On master: COMMIT
+[0m02:42:23.592201 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m02:42:23.593203 [debug] [MainThread]: On master: Close
+[0m02:42:23.593203 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m02:42:23.594200 [debug] [MainThread]: Connection 'list_data_engineering_test' was properly closed.
+[0m02:42:23.594200 [debug] [MainThread]: Connection 'list_data_engineering_test_public' was properly closed.
+[0m02:42:23.595199 [debug] [MainThread]: Connection 'model.task_4.calculate_comissions' was properly closed.
+[0m02:42:23.595199 [info ] [MainThread]: 
+[0m02:42:23.596202 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.45 seconds (0.45s).
+[0m02:42:23.596202 [debug] [MainThread]: Command end result
+[0m02:42:23.622830 [info ] [MainThread]: 
+[0m02:42:23.622830 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m02:42:23.623829 [info ] [MainThread]: 
+[0m02:42:23.623829 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m02:42:23.624826 [debug] [MainThread]: Command `dbt run` succeeded at 02:42:23.624826 after 2.33 seconds
+[0m02:42:23.626331 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023162FED3C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023165B53C40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023165D0C460>]}
+[0m02:42:23.626331 [debug] [MainThread]: Flushing usage events
+[0m02:43:39.086123 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D3BD93F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D67432B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D67430D0>]}
+
+
+============================== 02:43:39.091512 | 70627bee-8912-46df-b32c-11cd11805df8 ==============================
+[0m02:43:39.091512 [info ] [MainThread]: Running with dbt=1.8.9
+[0m02:43:39.091512 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': 'C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt', 'log_path': 'C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4\\dbt\\logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'invocation_command': 'dbt run --profiles-dir C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt --project-dir C:\\Users\\nicol\\Desktop\\ifco-assessment\\data-engineering-test\\solution\\src\\task_4/dbt', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m02:43:39.308634 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6147FD0>]}
+[0m02:43:39.358559 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D5B53220>]}
+[0m02:43:39.359595 [info ] [MainThread]: Registered adapter: postgres=1.8.2
+[0m02:43:39.631700 [debug] [MainThread]: checksum: 132857a23e9d07220246854f7763165174ce9b737cfc7867629ace4294e520b1, vars: {}, profile: , target: , version: 1.8.9
+[0m02:43:39.765265 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m02:43:39.766265 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m02:43:39.795242 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6D20130>]}
+[0m02:43:39.881806 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6CFF8E0>]}
+[0m02:43:39.882811 [info ] [MainThread]: Found 1 model, 428 macros
+[0m02:43:39.883808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6CFF100>]}
+[0m02:43:39.884806 [info ] [MainThread]: 
+[0m02:43:39.885805 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m02:43:39.887309 [debug] [ThreadPool]: Acquiring new postgres connection 'list_data_engineering_test'
+[0m02:43:39.972020 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test"
+[0m02:43:39.973018 [debug] [ThreadPool]: On list_data_engineering_test: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "list_data_engineering_test"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m02:43:39.973018 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m02:43:39.993254 [debug] [ThreadPool]: SQL status: SELECT 4 in 0.020 seconds
+[0m02:43:39.994254 [debug] [ThreadPool]: On list_data_engineering_test: Close
+[0m02:43:39.996258 [debug] [ThreadPool]: Acquiring new postgres connection 'list_data_engineering_test_public'
+[0m02:43:40.001817 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test_public"
+[0m02:43:40.002816 [debug] [ThreadPool]: On list_data_engineering_test_public: BEGIN
+[0m02:43:40.002816 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m02:43:40.017901 [debug] [ThreadPool]: SQL status: BEGIN in 0.015 seconds
+[0m02:43:40.018910 [debug] [ThreadPool]: Using postgres connection "list_data_engineering_test_public"
+[0m02:43:40.019513 [debug] [ThreadPool]: On list_data_engineering_test_public: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "list_data_engineering_test_public"} */
+select
+      'data_engineering_test' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'data_engineering_test' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'data_engineering_test' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m02:43:40.024454 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.005 seconds
+[0m02:43:40.026458 [debug] [ThreadPool]: On list_data_engineering_test_public: ROLLBACK
+[0m02:43:40.027458 [debug] [ThreadPool]: On list_data_engineering_test_public: Close
+[0m02:43:40.031972 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.031972 [debug] [MainThread]: On master: BEGIN
+[0m02:43:40.032973 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m02:43:40.047089 [debug] [MainThread]: SQL status: BEGIN in 0.014 seconds
+[0m02:43:40.048215 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.048215 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m02:43:40.056365 [debug] [MainThread]: SQL status: SELECT 0 in 0.007 seconds
+[0m02:43:40.058121 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6D38520>]}
+[0m02:43:40.058121 [debug] [MainThread]: On master: ROLLBACK
+[0m02:43:40.060136 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.060136 [debug] [MainThread]: On master: BEGIN
+[0m02:43:40.062127 [debug] [MainThread]: SQL status: BEGIN in 0.001 seconds
+[0m02:43:40.063130 [debug] [MainThread]: On master: COMMIT
+[0m02:43:40.063130 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.064126 [debug] [MainThread]: On master: COMMIT
+[0m02:43:40.065131 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m02:43:40.065131 [debug] [MainThread]: On master: Close
+[0m02:43:40.066127 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m02:43:40.067130 [info ] [MainThread]: 
+[0m02:43:40.070346 [debug] [Thread-1 (]: Began running node model.task_4.calculate_comissions
+[0m02:43:40.070346 [info ] [Thread-1 (]: 1 of 1 START sql view model public.calculate_comissions ........................ [RUN]
+[0m02:43:40.071347 [debug] [Thread-1 (]: Acquiring new postgres connection 'model.task_4.calculate_comissions'
+[0m02:43:40.072346 [debug] [Thread-1 (]: Began compiling node model.task_4.calculate_comissions
+[0m02:43:40.078362 [debug] [Thread-1 (]: Writing injected SQL for node "model.task_4.calculate_comissions"
+[0m02:43:40.079368 [debug] [Thread-1 (]: Began executing node model.task_4.calculate_comissions
+[0m02:43:40.115411 [debug] [Thread-1 (]: Writing runtime sql for node "model.task_4.calculate_comissions"
+[0m02:43:40.116409 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:43:40.117414 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: BEGIN
+[0m02:43:40.117920 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m02:43:40.132521 [debug] [Thread-1 (]: SQL status: BEGIN in 0.015 seconds
+[0m02:43:40.133518 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:43:40.133518 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+
+  create view "data_engineering_test"."public"."calculate_comissions__dbt_tmp"
+    
+    
+  as (
+    WITH orders_with_salesowners AS (
+    SELECT
+        o.order_id,
+        round(i.gross_value / 100.0, 2) AS gross_value_in_euros,
+
+        -- Converting the gross value into net value by taking the vat out in a non-lineal way.
+        round((i.gross_value / 100.0) / (1 + i.vat / 100.0), 2) AS net_value_in_euros,
+        string_to_array(o.salesowners, ', ') AS salesowners_array
+    FROM
+        public.orders o
+    JOIN
+        public.invoicing_data i ON o.order_id = i.order_id
+),
+salesowners AS (
+    SELECT
+        ows.order_id,
+        ows.net_value_in_euros,
+        so.salesowner,
+        so.ordinality AS salesowner_position
+    FROM
+        orders_with_salesowners ows,
+        unnest(ows.salesowners_array) WITH ORDINALITY AS so(salesowner, ordinality) -- unnests the array and assigns the order for each sales person in the order that it comes from the file
+),
+commission_calc AS (
+    SELECT
+        order_id,
+        salesowner,
+        CASE 
+            WHEN salesowner_position = 1 THEN net_value_in_euros * 0.06    -- Main owner - 6%
+            WHEN salesowner_position = 2 THEN net_value_in_euros * 0.025   -- Co-owner 1 - 2.5%
+            WHEN salesowner_position = 3 THEN net_value_in_euros * 0.0095  -- Co-owner 2 - 0.95%
+            ELSE 0  -- No comission
+        END AS commission
+    FROM salesowners
+)
+SELECT
+    salesowner,
+    ROUND(SUM(commission), 2) AS total_commission
+FROM commission_calc
+GROUP BY salesowner
+ORDER BY total_commission DESC
+  );
+[0m02:43:40.141562 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.007 seconds
+[0m02:43:40.148072 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:43:40.148580 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+alter table "data_engineering_test"."public"."calculate_comissions__dbt_tmp" rename to "calculate_comissions"
+[0m02:43:40.150610 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m02:43:40.164626 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: COMMIT
+[0m02:43:40.164626 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:43:40.165627 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: COMMIT
+[0m02:43:40.169155 [debug] [Thread-1 (]: SQL status: COMMIT in 0.003 seconds
+[0m02:43:40.175667 [debug] [Thread-1 (]: Applying DROP to: "data_engineering_test"."public"."calculate_comissions__dbt_backup"
+[0m02:43:40.180255 [debug] [Thread-1 (]: Using postgres connection "model.task_4.calculate_comissions"
+[0m02:43:40.180255 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: /* {"app": "dbt", "dbt_version": "1.8.9", "profile_name": "task_4_profile", "target_name": "dev", "node_id": "model.task_4.calculate_comissions"} */
+drop view if exists "data_engineering_test"."public"."calculate_comissions__dbt_backup" cascade
+[0m02:43:40.182261 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m02:43:40.185255 [debug] [Thread-1 (]: On model.task_4.calculate_comissions: Close
+[0m02:43:40.186260 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '70627bee-8912-46df-b32c-11cd11805df8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D28EE0E0>]}
+[0m02:43:40.187773 [info ] [Thread-1 (]: 1 of 1 OK created sql view model public.calculate_comissions ................... [[32mCREATE VIEW[0m in 0.11s]
+[0m02:43:40.188283 [debug] [Thread-1 (]: Finished running node model.task_4.calculate_comissions
+[0m02:43:40.189812 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.189812 [debug] [MainThread]: On master: BEGIN
+[0m02:43:40.190820 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m02:43:40.204365 [debug] [MainThread]: SQL status: BEGIN in 0.014 seconds
+[0m02:43:40.205363 [debug] [MainThread]: On master: COMMIT
+[0m02:43:40.206362 [debug] [MainThread]: Using postgres connection "master"
+[0m02:43:40.206362 [debug] [MainThread]: On master: COMMIT
+[0m02:43:40.208092 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m02:43:40.208092 [debug] [MainThread]: On master: Close
+[0m02:43:40.209098 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m02:43:40.209098 [debug] [MainThread]: Connection 'list_data_engineering_test' was properly closed.
+[0m02:43:40.210099 [debug] [MainThread]: Connection 'list_data_engineering_test_public' was properly closed.
+[0m02:43:40.210099 [debug] [MainThread]: Connection 'model.task_4.calculate_comissions' was properly closed.
+[0m02:43:40.211100 [info ] [MainThread]: 
+[0m02:43:40.211100 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.33 seconds (0.33s).
+[0m02:43:40.212098 [debug] [MainThread]: Command end result
+[0m02:43:40.238085 [info ] [MainThread]: 
+[0m02:43:40.238085 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m02:43:40.239058 [info ] [MainThread]: 
+[0m02:43:40.239058 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m02:43:40.241183 [debug] [MainThread]: Command `dbt run` succeeded at 02:43:40.241183 after 1.26 seconds
+[0m02:43:40.241183 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D3BD93F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6146A70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000197D6147BE0>]}
+[0m02:43:40.242187 [debug] [MainThread]: Flushing usage events
