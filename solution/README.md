@@ -33,9 +33,8 @@ This project uses **Docker** to ensure all dependencies and services (like Postg
 
 Start by cloning this repository to your local machine:
 ```bash
-git clone https://github.com/nicolasmns/data-engineering-test
-git checkout solution-assignment
-cd solution
+git clone --branch solution-assignment https://github.com/nicolasmns/data-engineering-test
+cd data-engineering-test/solution
 ```
 
 ### Step 2: Start the Docker Containers
