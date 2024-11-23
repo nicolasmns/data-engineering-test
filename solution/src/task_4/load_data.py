@@ -5,9 +5,6 @@ from datetime import datetime
 from json.decoder import JSONDecodeError
 import json
 
-import os
-
-
 ORDER_FILE = "orders.csv"
 INVOICING_FILE = "invoicing_data.json"
 
@@ -43,6 +40,16 @@ def clean_contact_data(value):
 def load_data_to_postgres(host, test_path):
     """
     Connects to a PostgreSQL database and loads data from orders.csv and invoicing_data.json.
+
+    Args:
+        host (str): The hostname of the PostgreSQL server.
+        test_path (list or None): List of file paths [orders_filepath, invoicing_filepath] for testing purposes. 
+                                  If None, the function will attempt to fetch the default file paths using getFilepath().
+
+    Raises:
+        Exception: If there are errors during data validation or insertion.
+        FileNotFoundError: If the required files are not found.
+        psycopg2.Error: If there are issues connecting to or interacting with the database.
     """
     try:
         conn = psycopg2.connect(
@@ -55,7 +62,7 @@ def load_data_to_postgres(host, test_path):
         cursor = conn.cursor()
 
         try:
-            # Determine file paths
+            # Determine if there are file paths, if not get the default ones.
             if test_path is None:
                 orders_filepath = getFilepath(ORDER_FILE)
                 invoicing_filepath = getFilepath(INVOICING_FILE)
@@ -63,7 +70,7 @@ def load_data_to_postgres(host, test_path):
                 orders_filepath = test_path[0]
                 invoicing_filepath = test_path[1]
 
-            # Load orders file
+            # Load the orders file
             try:
                 orders_df = pd.read_csv(orders_filepath, sep=";")
                 if orders_df.empty:
@@ -75,13 +82,13 @@ def load_data_to_postgres(host, test_path):
             except FileNotFoundError:
                 raise FileNotFoundError(f"Orders file not found: {orders_filepath}")
 
-            # Validate required columns
+            # Validate the columns
             required_columns = ["order_id", "date", "company_id", "company_name", "crate_type", "contact_data", "salesowners"]
             missing_columns = [col for col in required_columns if col not in orders_df.columns]
             if missing_columns:
                 raise Exception(f"Missing required columns in orders.csv: {missing_columns}")
 
-            # Process and insert data into the database
+            # clean and insert the data into the database
             orders_df["date"] = orders_df["date"].apply(convert_date)
             orders_df["contact_data"] = orders_df["contact_data"].apply(clean_contact_data)
 
@@ -96,14 +103,14 @@ def load_data_to_postgres(host, test_path):
             ])
             print("Orders.csv data loaded successfully!")
 
-            # Load invoicing file
+            # Load the invoicing file
             try:
                 with open(invoicing_filepath, "r") as file:
                     data = json.load(file)
             except FileNotFoundError:
                 raise FileNotFoundError(f"Invoicing file not found: {invoicing_filepath}")
 
-            # Validate JSON keys
+            # Validate the JSON columns
             invoicing_data = data.get("data", {}).get("invoices", [])
             if not invoicing_data:
                 raise Exception("No invoices found in invoicing_data.json.")
@@ -112,7 +119,7 @@ def load_data_to_postgres(host, test_path):
                 if key not in invoicing_data[0]:
                     raise Exception(f"Missing required key '{key}' in invoicing_data.json.")
 
-            # Process and insert invoicing data
+            # Process and insert the invoicing data
             try:
                 invoicing_df = pd.DataFrame(invoicing_data)
             except FileNotFoundError:
