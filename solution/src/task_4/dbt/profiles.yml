@@ -2,7 +2,7 @@ task_4_profile:
   outputs:
     dev:
       type: postgres
-      host: localhost
+      host: db
       user: user
       password: password
       port: 5432

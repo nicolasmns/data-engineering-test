@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 from src.utils import getFilepath
 
 #########################################################################################
@@ -113,6 +112,7 @@ def main():
     orders_filepath = getFilepath("orders.csv")
     orders_df = load_csv_to_dataframe(orders_filepath)
     distribution_df = calculate_crate_distribution(orders_df)
+    print(distribution_df)
     bar_plot_df(distribution_df)
 
 if __name__ == '__main__':

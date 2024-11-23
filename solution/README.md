@@ -35,7 +35,7 @@ Start by cloning this repository to your local machine:
 ```bash
 git clone https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment
 git checkout solution-assignment
-cd  solution
+cd solution
 ```
 
 ### Step 2: Start the Docker Containers
@@ -43,52 +43,49 @@ cd  solution
 Build the Docker images and start the containers using the following command:
 
 ```bash
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 This will:
 * Build the Python environment with all necessary dependencies (managed by Poetry).
 * Start a PostgreSQL database (used for Task 4).
 
-### Step 3: Execute the Tasks
-Each test is implemented as a standalone script or function. Below are the instructions to execute each test:
+### Step 3: Connect to the Docker container
+
+```bash
+docker exec -it python_app bash
+```
+
+### Step 4: Execute the Tasks
+Each task is implemented as a standalone script or function. Below are the instructions to execute each task:
 
 #### Task 1: Distribution of Crate Types Per Company
 Run the script to calculate the distribution of crate types per company:
 ```bash
-docker exec -it python_app poetry run python src/task_1/crate_distribution.py
+python src/task_1/crate_distribution.py
 ```
 
 #### Task 2: DataFrame of Orders with Full Name of the Contact
 Run the script to create a DataFrame with order IDs and full contact names:
 ```bash
-docker exec -it python_app poetry run python src/task_2/contact_fullname.py
+python src/task_2/contact_fullname.py
 ```
 
 #### Task 3: DataFrame of Orders with Contact Address
 Run the script to create a DataFrame with order IDs and contact addresses:
 ```bash
-docker exec -it python_app poetry run python src/task_3/contact_address.py
+python src/task_3/contact_address.py
 ```
 
 #### Task 4: Calculation of Sales Team Commissions
-###### Step 1: Load Data into PostgreSQL
-Execute the data loading script to populate the database:
-
 ```bash
-docker exec -it python_app poetry run python src/task_4/load_data.py
+python src/task_4/task_4_comissions.py
 ```
 This script will:
 
-- Parse the data from orders.csv and invoicing_data.json.
-- Create the necessary tables in the PostgreSQL database.
-- Insert the parsed data into the respective table
-
-###### Step 2: Execute DBT to Calculate Commissions
-Once the data is loaded, run DBT to perform the calculations:
-```bash
-docker exec -it python_app poetry run dbt run --project-dir src/task_4/dbt
-```
+- Retrieve the files from the src/resources directory.
+- Insert the data from orders.csv and invoicing_data.json into their respective tables.
+- Runs DBT to create the calculate_commissions view.
 
 #### Task 5: DataFrame of Companies with Sales Owners
 Run the script to generate a DataFrame of companies with their sales owners:
@@ -100,12 +97,12 @@ docker exec -it python_app poetry run python src/task_5/company_salesowners.py
 To validate the implementation, run the unit tests:
 
 ```bash
-docker exec -it python_app poetry run pytest
+pytest
 ```
 
 ### Step 6: Check coverage
 ```bash
-docker exec -it python_app poetry --cov=src -cov-report=term-missing
+pytest --cov=src -cov-report=term-missing
 ```
 ---
 
@@ -113,24 +110,38 @@ docker exec -it python_app poetry --cov=src -cov-report=term-missing
 
 Each task has a corresponding PDF that provides a detailed explanation of the implementation:
 
-- **Task 1**: [task_1_crate_distribution.pdf](path_to_pdf)
-- **Task 2**: [task_2_contact_fullname.pdf](path_to_pdf)
-- **Task 3**: [task_3_contact_address.pdf](path_to_pdf)
-- **Task 4**: [task_4_commissions.pdf](path_to_pdf)
-- **Task 5**: [task_5_company_salesowners.pdf](path_to_pdf)
+- **Task 1**: [notebook_task_1_analysis](https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment/solution/notebooks/notebook_task_1_analysis.ipynb)
+- **Task 2**: [notebook_task_2_analysis](https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment/solution/notebooks/notebook_task_2_analysis.ipynb)
+- **Task 3**: [notebook_task_3_analysis](https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment/solution/notebooks/notebook_task_3_analysis.ipynb)
+- **Task 4**: [notebook_task_4_analysis](https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment/solution/notebooks/notebook_task_4_analysis.ipynb)
+- **Task 5**: [notebook_task_5_analysis](https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment/solution/notebooks/notebook_task_5_analysis.ipynb)
 
-These PDFs are located in the `notebooks/` folder and are provided to help you understand each task's implementation and results.
+These ipynb are located in the `notebooks/` folder and are provided to help you understand each task's implementation and results, additionally I added some plots to help understand the data.
 
+To open Jupyter, inside the container you can execute the following command:
+
+```bash
+PYTHONWARNINGS="ignore" jupyter notebook --allow-root --ip=0.0.0.0 --port=8888
+```
+This will print in the terminal a link with a token, something like:
+
+```bash
+    To access the server, open this file in a browser:
+        file:///root/.local/share/jupyter/runtime/jpserver-15-open.html
+    Or copy and paste one of these URLs:
+        http://0f30fc02d8ff:8888/tree?token=<your_token>
+        http://127.0.0.1:8888/tree?token=<your_token>
+```
 ---
 
 ## Notes
 #### DBT and PostgreSQL:
 
-* DBT is used to model and compute commissions, requiring PostgreSQL to be populated with data before running DBT. Make sure to load the data before running DBT.
+* DBT is used to model and compute the calculation of commissions, requiring PostgreSQL to be populated with data before running DBT.
 
 #### Jupyter Notebooks:
 
-If you prefer to explore the tasks interactively, Jupyter notebooks are available. You can check them as PDFs or run them locally if needed.
+If you prefer to explore the tasks interactively, Jupyter notebooks are available. you can run them locally if needed.
 
 #### Docker:
 Docker ensures that all dependencies, including Poetry, PostgreSQL, and DBT, are automatically installed and managed within isolated containers.

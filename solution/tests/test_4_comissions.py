@@ -5,7 +5,7 @@ import pytest
 import psycopg2
 import pandas as pd
 
-HOST = "localhost"
+HOST = "db"
 
 # Session scope is at the beggining of the execution
 @pytest.fixture(scope='session')
