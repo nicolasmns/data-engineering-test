@@ -33,7 +33,7 @@ This project uses **Docker** to ensure all dependencies and services (like Postg
 
 Start by cloning this repository to your local machine:
 ```bash
-git clone https://github.com/nicolasmns/data-engineering-test/tree/solution-assignment
+git clone https://github.com/nicolasmns/data-engineering-test
 git checkout solution-assignment
 cd solution
 ```
@@ -90,7 +90,7 @@ This script will:
 #### Task 5: DataFrame of Companies with Sales Owners
 Run the script to generate a DataFrame of companies with their sales owners:
 ```bash
-docker exec -it python_app poetry run python src/task_5/company_salesowners.py
+python src/task_5/company_sales_owners.py
 ```
 
 ### Step 5: Run Unit Tests
@@ -102,7 +102,7 @@ pytest
 
 ### Step 6: Check coverage
 ```bash
-pytest --cov=src -cov-report=term-missing
+pytest --cov=src --cov-report=term-missing
 ```
 ---
 
