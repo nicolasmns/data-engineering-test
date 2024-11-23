@@ -141,7 +141,7 @@ This will print in the terminal a link with a token, something like:
 
 #### Jupyter Notebooks:
 
-If you prefer to explore the tasks interactively, Jupyter notebooks are available. you can run them locally if needed.
+* If you prefer to explore the tasks interactively, Jupyter notebooks are available. you can run them locally if needed.
 
 #### Docker:
-Docker ensures that all dependencies, including Poetry, PostgreSQL, and DBT, are automatically installed and managed within isolated containers.
+* Docker ensures that all dependencies, including Poetry, PostgreSQL, and DBT, are automatically installed and managed within isolated containers.
